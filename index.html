@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dami Fashion — În curând</title>
+  <meta name="description" content="Dami Fashion se deschide în curând. Lasă-ne adresa de e-mail și te anunțăm la lansare.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #2B1A2E;        /* aubergine */
+      --paper: #EFE6EC;      /* mauve paper */
+      --silk: #FBF8FA;       /* silk white */
+      --rose: #B98A9E;       /* dusty rose */
+      --thread: #9C7B4E;     /* gold thread */
+      --muted: #6E5A70;
+      --serif: "Bodoni Moda", "Didot", Georgia, serif;
+      --sans: "Jost", "Futura", system-ui, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --ink: #F3E9EF; --paper: #22152A; --silk: #2E1F36;
+        --rose: #C99DB1; --thread: #C9A36E; --muted: #B7A3B8;
+      }
+    }
+    :root[data-theme="dark"] {
+      --ink: #F3E9EF; --paper: #22152A; --silk: #2E1F36;
+      --rose: #C99DB1; --thread: #C9A36E; --muted: #B7A3B8;
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+    html, body { height: 100%; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: clamp(1.5rem, 4vw, 3rem) 16px;
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+
+    /* Wordmark: the one bold element */
+    .wordmark {
+      text-align: center;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(4.5rem, 19vw, 10.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+    .wordmark .fashion {
+      display: block;
+      font-style: italic;
+      font-size: 0.42em;
+      letter-spacing: 0.01em;
+      color: var(--rose);
+      margin-top: 0.15em;
+    }
+
+    /* Seam: a stitched line that sews itself once on load */
+    .seam {
+      position: relative;
+      width: min(100%, 34rem);
+      height: 6px;
+      margin: clamp(1.75rem, 4vw, 2.75rem) auto 0;
+    }
+    .seam-thread {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 100%;
+      background: repeating-linear-gradient(90deg, var(--thread) 0 7px, transparent 7px 13px) center / 100% 1.5px no-repeat;
+      animation: sew 2.4s cubic-bezier(.6,.1,.3,1) .4s both;
+    }
+    .seam-thread::after {
+      content: "";
+      position: absolute;
+      right: -3px;
+      top: 50%;
+      width: 6px;
+      height: 6px;
+      margin-top: -3px;
+      border-radius: 50%;
+      background: var(--thread);
+    }
+    @keyframes sew { from { width: 0; } to { width: 100%; } }
+
+    main {
+      align-self: center;
+      text-align: center;
+      max-width: 34rem;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 7vw, 4.5rem) 0;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .lede { color: var(--muted); margin: 0 auto 2.25rem; max-width: 30rem; text-wrap: pretty; }
+    h1 { text-wrap: balance; }
+
+    form {
+      display: flex;
+      gap: 0;
+      border-bottom: 1.5px solid var(--ink);
+      max-width: 26rem;
+      margin: 0 auto;
+    }
+    label.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    input[type="email"] {
+      flex: 1;
+      min-width: 0;
+      background: transparent;
+      border: 0;
+      padding: 0.85rem 0.25rem;
+      font: inherit;
+      color: var(--ink);
+    }
+    input::placeholder { color: var(--muted); opacity: .8; }
+    input:focus { outline: none; }
+    form:focus-within { border-color: var(--thread); }
+    button {
+      background: none;
+      border: 0;
+      padding: 0.85rem 0.25rem 0.85rem 1rem;
+      font: inherit;
+      font-weight: 500;
+      color: var(--ink);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    button:hover { color: var(--thread); }
+    button:focus-visible, a:focus-visible {
+      outline: 2px solid var(--thread);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+    .note { min-height: 1.6em; margin-top: 1rem; font-size: 0.95rem; color: var(--muted); }
+    .note.ok { color: var(--ink); font-family: var(--serif); font-style: italic; font-size: 1.1rem; }
+
+    footer {
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+    footer a { color: inherit; text-underline-offset: 3px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .seam-thread { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="wordmark" aria-label="Dami Fashion">
+        Dami<span class="fashion">fashion</span>
+      </div>
+<div class="seam" aria-hidden="true"><span class="seam-thread"></span></div>
+    </header>
+
+    <main>
+      <h1>Colecția noastră se coase chiar acum.</h1>
+      <p class="lede">
+        Pregătim un magazin cu piese alese cu grijă, pentru femei care se îmbracă
+        cu intenție. Lasă-ne adresa de e-mail și îți scriem în ziua lansării.
+      </p>
+
+      <form id="notify" novalidate>
+        <label class="sr" for="email">Adresa ta de e-mail</label>
+        <input id="email" name="email" type="email" autocomplete="email"
+               placeholder="adresa ta de e-mail" required>
+        <button type="submit">Anunță-mă</button>
+      </form>
+      <p class="note" id="note" role="status" aria-live="polite"></p>
+    </main>
+
+    <footer>
+      © <span id="year">2026</span> Dami Fashion
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const form = document.getElementById('notify');
+    const input = document.getElementById('email');
+    const note = document.getElementById('note');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      note.className = 'note';
+      if (!input.value.trim()) {
+        note.textContent = 'Scrie adresa de e-mail ca să te putem anunța.';
+        input.focus();
+        return;
+      }
+      if (!input.checkValidity()) {
+        note.textContent = 'Adresa pare incompletă. Verifică forma nume@exemplu.ro.';
+        input.focus();
+        return;
+      }
+      // TODO: trimite adresa către un serviciu de newsletter (ex. Mailchimp, Formspree)
+      // înainte de lansarea publică. Momentan adresa nu este salvată nicăieri.
+      form.hidden = true;
+      note.className = 'note ok';
+      note.textContent = 'Mulțumim. Te anunțăm în ziua lansării.';
+    });
+  </script>
+</body>
+</html>
