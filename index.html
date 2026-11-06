@@ -3,223 +3,159 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dami Fashion — În curând</title>
-  <meta name="description" content="Dami Fashion se deschide în curând. Lasă-ne adresa de e-mail și te anunțăm la lansare.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --ink: #2B1A2E;        /* aubergine */
-      --paper: #EFE6EC;      /* mauve paper */
-      --silk: #FBF8FA;       /* silk white */
-      --rose: #B98A9E;       /* dusty rose */
-      --thread: #9C7B4E;     /* gold thread */
-      --muted: #6E5A70;
-      --serif: "Bodoni Moda", "Didot", Georgia, serif;
-      --sans: "Jost", "Futura", system-ui, sans-serif;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --ink: #F3E9EF; --paper: #22152A; --silk: #2E1F36;
-        --rose: #C99DB1; --thread: #C9A36E; --muted: #B7A3B8;
-      }
-    }
-    :root[data-theme="dark"] {
-      --ink: #F3E9EF; --paper: #22152A; --silk: #2E1F36;
-      --rose: #C99DB1; --thread: #C9A36E; --muted: #B7A3B8;
-    }
-
-    * { box-sizing: border-box; margin: 0; }
-    html, body { height: 100%; }
-    body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-weight: 300;
-      font-size: 1.0625rem;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .page {
-      min-height: 100svh;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      padding: clamp(1.5rem, 4vw, 3rem) 16px;
-      max-width: 72rem;
-      margin: 0 auto;
-    }
-
-    /* Wordmark: the one bold element */
-    .wordmark {
-      text-align: center;
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(4.5rem, 19vw, 10.5rem);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-    }
-    .wordmark .fashion {
-      display: block;
-      font-style: italic;
-      font-size: 0.42em;
-      letter-spacing: 0.01em;
-      color: var(--rose);
-      margin-top: 0.15em;
-    }
-
-    /* Seam: a stitched line that sews itself once on load */
-    .seam {
-      position: relative;
-      width: min(100%, 34rem);
-      height: 6px;
-      margin: clamp(1.75rem, 4vw, 2.75rem) auto 0;
-    }
-    .seam-thread {
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 100%;
-      background: repeating-linear-gradient(90deg, var(--thread) 0 7px, transparent 7px 13px) center / 100% 1.5px no-repeat;
-      animation: sew 2.4s cubic-bezier(.6,.1,.3,1) .4s both;
-    }
-    .seam-thread::after {
-      content: "";
-      position: absolute;
-      right: -3px;
-      top: 50%;
-      width: 6px;
-      height: 6px;
-      margin-top: -3px;
-      border-radius: 50%;
-      background: var(--thread);
-    }
-    @keyframes sew { from { width: 0; } to { width: 100%; } }
-
-    main {
-      align-self: center;
-      text-align: center;
-      max-width: 34rem;
-      margin: 0 auto;
-      padding: clamp(2.5rem, 7vw, 4.5rem) 0;
-    }
-    h1 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(1.75rem, 4.5vw, 2.5rem);
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-    .lede { color: var(--muted); margin: 0 auto 2.25rem; max-width: 30rem; text-wrap: pretty; }
-    h1 { text-wrap: balance; }
-
-    form {
-      display: flex;
-      gap: 0;
-      border-bottom: 1.5px solid var(--ink);
-      max-width: 26rem;
-      margin: 0 auto;
-    }
-    label.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-    input[type="email"] {
-      flex: 1;
-      min-width: 0;
-      background: transparent;
-      border: 0;
-      padding: 0.85rem 0.25rem;
-      font: inherit;
-      color: var(--ink);
-    }
-    input::placeholder { color: var(--muted); opacity: .8; }
-    input:focus { outline: none; }
-    form:focus-within { border-color: var(--thread); }
-    button {
-      background: none;
-      border: 0;
-      padding: 0.85rem 0.25rem 0.85rem 1rem;
-      font: inherit;
-      font-weight: 500;
-      color: var(--ink);
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    button:hover { color: var(--thread); }
-    button:focus-visible, a:focus-visible {
-      outline: 2px solid var(--thread);
-      outline-offset: 3px;
-      border-radius: 2px;
-    }
-    .note { min-height: 1.6em; margin-top: 1rem; font-size: 0.95rem; color: var(--muted); }
-    .note.ok { color: var(--ink); font-family: var(--serif); font-style: italic; font-size: 1.1rem; }
-
-    footer {
-      text-align: center;
-      font-size: 0.875rem;
-      color: var(--muted);
-    }
-    footer a { color: inherit; text-underline-offset: 3px; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .seam-thread { animation: none; }
-    }
-  </style>
+  <title>Dami Fashion</title>
+  <meta name="description" content="Dami Fashion, atelier de design vestimentar: rochii la comandă, rochii de mireasă, ținute pentru ocazii speciale și retușuri.">
+  <meta property="og:title" content="Dami Fashion">
+  <meta property="og:description" content="Dami Fashion, atelier de design vestimentar: rochii la comandă, rochii de mireasă, ținute pentru ocazii speciale și retușuri.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ro_RO">
+  <link rel="preload" href="assets/fonts/bodoni-moda-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/jost-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23000'/%3E%3Ctext x='32' y='47' font-family='Georgia,serif' font-size='44' fill='%23fff' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="wordmark" aria-label="Dami Fashion">
-        Dami<span class="fashion">fashion</span>
+  <a class="skip-link" href="#continut">Sari la conținut</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">Dami<em>fashion</em></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Meniu</button>
+      <nav class="nav" id="nav" aria-label="Meniu principal">
+        <ul>
+          <li><a href="index.html" aria-current="page">Acasă</a></li>
+          <li><a href="despre-noi.html">Despre noi</a></li>
+          <li><a href="intrebari-frecvente.html">Întrebări frecvente</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="continut">
+    <section class="hero on-black">
+      <div class="hero-text">
+        <h1>Atelierul tău de design vestimentar</h1>
+        <div class="seam seam-sew" aria-hidden="true"></div>
+        <p class="lede muted">Suntem pasionați de arta de a crea piese vestimentare care să reflecte personalitatea, eleganța și individualitatea fiecărei femei. La atelierul nostru, punem accent pe calitatea materialelor și atenția la detalii pentru a oferi clienților noștri experiențe vestimentare unice.</p>
+        <div class="actions">
+          <a class="btn btn-solid" href="contact.html">Programează o întâlnire</a>
+          <a class="btn btn-line" href="despre-noi.html">Despre atelier</a>
+        </div>
       </div>
-<div class="seam" aria-hidden="true"><span class="seam-thread"></span></div>
-    </header>
+      <figure class="hero-figure">
+        <img src="assets/img/acasa-hero.jpg" alt="Manechin de croitorie cu centimetru, lângă o mașină de cusut" width="1200" height="1500" fetchpriority="high" decoding="async">
+      </figure>
+    </section>
 
-    <main>
-      <h1>Colecția noastră se coase chiar acum.</h1>
-      <p class="lede">
-        Pregătim un magazin cu piese alese cu grijă, pentru femei care se îmbracă
-        cu intenție. Lasă-ne adresa de e-mail și îți scriem în ziua lansării.
-      </p>
+    <section class="section" aria-labelledby="ajutor-title">
+      <div class="wrap split">
+        <div class="split-text">
+          <h2 id="ajutor-title">Cum te putem ajuta?</h2>
+          <h3>Descoperă arta vestimentară</h3>
+          <p>Echipa noastră de designeri talentați și experimentați vă va ghida în alegerea celor mai potrivite materiale, culori și stiluri, asigurându-se că fiecare creație este adaptată perfect siluetei și gusturilor dumneavoastră.</p>
+          <p>Ne dedicăm să creăm nu doar haine, ci opere de artă vestimentară care să vă pună în valoare frumusețea naturală.</p>
+          <div class="actions">
+            <a class="btn btn-line" href="intrebari-frecvente.html">Întrebări frecvente</a>
+          </div>
+        </div>
+        <div class="split-media pair">
+          <img src="assets/img/ajutor-1.jpg" alt="Croitoreasă ajustând o piesă pe manechin" width="1000" height="1250" loading="lazy" decoding="async">
+          <img src="assets/img/ajutor-2.jpg" alt="Mâini pregătind o mașină de surfilat" width="800" height="800" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
 
-      <form id="notify" novalidate>
-        <label class="sr" for="email">Adresa ta de e-mail</label>
-        <input id="email" name="email" type="email" autocomplete="email"
-               placeholder="adresa ta de e-mail" required>
-        <button type="submit">Anunță-mă</button>
-      </form>
-      <p class="note" id="note" role="status" aria-live="polite"></p>
-    </main>
+    <section class="section section-mist" aria-labelledby="beneficii-title">
+      <div class="wrap">
+        <div class="benefits-head">
+          <h2 id="beneficii-title">Beneficii</h2>
+        </div>
+        <ul class="benefits">
+          <li>
+            <h3>Profesionalism</h3>
+            <p>Expertiza noastră asigură servicii de cea mai înaltă calitate, cu atenție minuțioasă pentru fiecare detaliu.</p>
+          </li>
+          <li>
+            <h3>Creativitate</h3>
+            <p>Abordăm fiecare design cu o viziune unică, transformând materialele în creații vestimentare memorabile.</p>
+          </li>
+          <li>
+            <h3>Inspirație</h3>
+            <p>Fiecare piesă pe care o realizăm este o sursă de inspirație, reflectând frumusețea și originalitatea în arta croitoriei.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-    <footer>
-      © <span id="year">2026</span> Dami Fashion
-    </footer>
-  </div>
+    <section class="statement" aria-label="Despre noi pe scurt">
+      <figure class="statement-figure">
+        <img src="assets/img/acasa-atelier.jpg" alt="Mașină de cusut și manechin într-un atelier de croitorie" width="1400" height="1000" loading="lazy" decoding="async">
+      </figure>
+      <div class="statement-text">
+        <blockquote>La atelierul nostru, nu facem doar haine, ci și amintiri frumoase.</blockquote>
+        <p class="muted" style="margin-top:1.5rem">Din 2022 creăm rochii personalizate, de la rochii de mireasă la ținute pentru ocazii speciale.</p>
+        <div class="actions">
+          <a class="btn btn-solid" href="despre-noi.html">Citește povestea noastră</a>
+        </div>
+      </div>
+    </section>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    <section class="section on-black contact-band" aria-labelledby="contact-band-title">
+      <div class="wrap">
+        <div>
+          <h2 id="contact-band-title">Hai să creăm împreună ținuta ta.</h2>
+          <p class="lede muted" style="margin-top:1.25rem">Sună-ne sau scrie-ne și stabilim o întâlnire în atelier.</p>
+          <div class="contact-lines">
+            <a href="tel:+40726604440">0726 604 440</a>
+            <a href="mailto:vreau@damifashion.ro">vreau@damifashion.ro</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    const form = document.getElementById('notify');
-    const input = document.getElementById('email');
-    const note = document.getElementById('note');
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      note.className = 'note';
-      if (!input.value.trim()) {
-        note.textContent = 'Scrie adresa de e-mail ca să te putem anunța.';
-        input.focus();
-        return;
-      }
-      if (!input.checkValidity()) {
-        note.textContent = 'Adresa pare incompletă. Verifică forma nume@exemplu.ro.';
-        input.focus();
-        return;
-      }
-      // TODO: trimite adresa către un serviciu de newsletter (ex. Mailchimp, Formspree)
-      // înainte de lansarea publică. Momentan adresa nu este salvată nicăieri.
-      form.hidden = true;
-      note.className = 'note ok';
-      note.textContent = 'Mulțumim. Te anunțăm în ziua lansării.';
-    });
-  </script>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand">Dami <em>fashion</em></p>
+          <p class="muted" style="margin-top:1rem;color:var(--grey-on-black)">Atelier de design vestimentar. Rochii la comandă și retușuri.</p>
+        </div>
+        <div>
+          <h2>Pagini</h2>
+          <ul>
+            <li><a href="index.html">Acasă</a></li>
+            <li><a href="despre-noi.html">Despre noi</a></li>
+            <li><a href="intrebari-frecvente.html">Întrebări frecvente</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="tel:+40726604440">0726 604 440</a></li>
+            <li><a href="mailto:vreau@damifashion.ro">vreau@damifashion.ro</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Informații legale</h2>
+          <ul>
+            <li><a href="politica-de-confidentialitate.html">Politica de confidențialitate</a></li>
+            <li><a href="politica-cookies.html">Politica de cookies</a></li>
+            <li><a href="termeni-si-conditii.html">Termeni și condiții</a></li>
+            <li><a href="https://anpc.ro/ce-este-sal/" rel="noopener" target="_blank">ANPC – Soluționarea alternativă a litigiilor</a></li>
+            <li><a href="https://ec.europa.eu/consumers/odr" rel="noopener" target="_blank">Soluționarea online a litigiilor (UE)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-base">
+        <p>© <span data-year>2026</span> Dami Fashion. Toate drepturile rezervate.</p>
+        <p>Finanțat prin programul Start-Up Nation</p>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/js/site.js" defer></script>
+  <script>document.querySelectorAll('[data-year]').forEach(function(e){e.textContent=new Date().getFullYear()});</script>
 </body>
 </html>
